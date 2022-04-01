@@ -1,5 +1,6 @@
 package test.skypro;
 
+import test.skypro.Main;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -8,6 +9,8 @@ public class Book {
     private String name;
     private Author author;
     private int yearOfPublishing;
+    private static final int MAX_COUNT_OF_BOOKS = 5;
+    private static int countOfBooks = 0;
 
     public Book (String name, Author author, int year) {
         java.util.Random random = new java.util.Random();
@@ -15,10 +18,18 @@ public class Book {
         this.name= name;
         this.author = author;
         this.yearOfPublishing = year;
+        countOfBooks += 1;
     }
 
     public int getId () {
         return this.id;
+    }
+    public static int getMaxCountOfBooks () {
+        return MAX_COUNT_OF_BOOKS;
+    }
+
+    public static int getCountOfBooks () {
+        return countOfBooks;
     }
 
     public String getName () {
