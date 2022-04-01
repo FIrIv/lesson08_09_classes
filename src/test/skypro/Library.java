@@ -3,7 +3,6 @@ package test.skypro;
 public class Library {
     private Book [] library;
     private int maxCountOfBooks;
-    private int countOfBooks = 0;
 
     public Library (int maxCountOfBooks) {
         this.maxCountOfBooks = maxCountOfBooks;
@@ -21,10 +20,6 @@ public class Library {
 
     public int getMaxCountOfBooks () {
         return this.maxCountOfBooks;
-    }
-
-    public int getCountOfBooks () {
-        return this.countOfBooks;
     }
 
     public void printLibrary () {
