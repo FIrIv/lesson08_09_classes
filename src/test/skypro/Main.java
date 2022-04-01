@@ -5,60 +5,37 @@ import test.skypro.Book;
 
 public class Main {
 
-    public static void addBook (Book[] books, String nameOfBook, Author author, int yearOfPublishing) {
-        for (int i=0; i<Book.getMaxCountOfBooks(); i++) {
-            if (books[i] != null) continue;
-            books[i] = new Book(nameOfBook, author, yearOfPublishing);
-            return;
-        }
-        System.out.println("Некуда ставить книги!");
-    }
-
-    public static void printBooks (Book[] books) {
-        for (int i=0; i<Book.getMaxCountOfBooks(); i++) {
-            if (books[i] == null) continue;
-            System.out.println(books[i].getAuthor() + ": " + books[i].getName() + ": " + books[i].getYearOfPublishing());
-        }
-    }
-
     public static void main(String[] args) {
-        // авторы
-        Author author1 = new Author("Пушкин", "Александр", "Сергеевич");
-        Author author2 = new Author("Ирвинг", "Джон");
+        System.out.println("Authors:");
+        Author stephenKing = new Author("Stephen", "King");
+        Author stephenKing2 = new Author("Stephen", "King");
+        Author levTolstoy = new Author("Lev", "Tolstoy");
+        System.out.println("Author copies equal: " + stephenKing.equals(stephenKing2));
+        System.out.println("Author copies equal by hashCode: " + (stephenKing.hashCode() == stephenKing2.hashCode()));
+        System.out.println("Authors equal: " + stephenKing.equals(levTolstoy));
+        System.out.println("Authors equal by hashCode: " + (stephenKing.hashCode() == levTolstoy.hashCode()));
 
-        // книги
-        Book [] books = new Book[Book.getMaxCountOfBooks()];
-        addBook(books, "Молитва об Оуэне Мини", author2, 1989);
-        addBook(books, "Правила виноделов", author2, 1985);
-        addBook(books, "Руслан и Людмила", author1, 2000);
+        System.out.println(stephenKing);
+        System.out.println(levTolstoy);
 
-        for (int i=0; i<Book.getCountOfBooks(); i++) {
-            System.out.println("book" + (i+1) + " : " + books[i]);
-        }
+        System.out.println("==============================");
 
-        books[2].setYearOfPublishing(2002);
-        System.out.println("book3 (переиздание) : " + books[2]);
+        System.out.println("Books:");
+        Book theStand = new Book("The Stand", stephenKing, 1976);
+        Book theStand2 = new Book("The Stand", stephenKing, 1976);
+        Book warAndPeace = new Book("War and Peace", levTolstoy, 1869);
+        System.out.println("Book copies equal: " + theStand.equals(theStand2));
+        System.out.println("Book copies equal by hashCode: " + (theStand.hashCode() == theStand2.hashCode()));
+        System.out.println("Books equal: " + theStand.equals(warAndPeace));
+        System.out.println("Books equal by hashCode: " + (theStand.hashCode() == warAndPeace.hashCode()));
+        System.out.println(theStand);
+        System.out.println(warAndPeace);
 
-        System.out.println();
-        addBook(books, "Руслан и Людмила", author1, 2000);
-        System.out.println("book4 : " + books[2]);
-        if (books[3].equals(books[2])) System.out.println("book3 и book4 одинаковые");
-        else System.out.println("book3 и book4 разные");
+        System.out.println("==============================");
 
-        System.out.println();
-        if (books[1].equals(books[0])) System.out.println("book1 и book2 одинаковые");
-        else System.out.println("book1 и book2 разные");
-        System.out.println("book1 : " + books[0]);
-        System.out.println("book2 : " + books[1]);
-
-        System.out.println();
-        if (author1.equals(author2)) System.out.println("author1 и author2 одинаковые");
-        else System.out.println("author1 и author2 разные");
-        System.out.println("author1 : " + author1);
-        System.out.println("author2 : " + author2);
-
-        System.out.println();
-        System.out.println("Все книги: ");
-        printBooks(books);
+        Library library = new Library(2);
+        library.addBook(theStand);
+        library.addBook(warAndPeace);
+        System.out.println(library);
     }
 }
